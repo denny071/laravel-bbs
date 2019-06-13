@@ -15,7 +15,7 @@ class SeedCategoriesData extends Migration
     {
         $categories = [
             [
-                'name' => '分享',
+                   'name' => '分享',
                 'description' => '分享创造，分享发现'
             ],
             [
