@@ -74,7 +74,7 @@ body {
 
 
 /* Topic Index Page */
-.topics-index-page {
+.topics-index-page, .categories-show-page, .root-page {
   .topic-list {
     .nav>li>a {
       position: relative;
@@ -82,19 +82,24 @@ body {
       padding: 5px 14px;
       font-size: 0.9em;
     }
+
     a {
       color: #444444;
     }
+
     .meta {
       font-size: 0.9em;
       color: #b3b3b3;
+
       a {
         color: #b3b3b3;
       }
     }
+
     .badge {
       background-color: #d8d8d8;
     }
+
     hr {
       margin-top: 12px;
       margin-bottom: 12px;
