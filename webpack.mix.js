@@ -12,4 +12,6 @@ const mix = require('laravel-mix');
  */
 //添加是version 解决浏览器缓存问题
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css').version();;
+   .sass('resources/sass/app.scss', 'public/css').version()
+   .copyDirectory('resources/editor/js', 'public/js')
+   .copyDirectory('resources/editor/css', 'public/css');

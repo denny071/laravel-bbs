@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('styles')
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor.css') }}">
+@stop
+
+
 @section('content')
 
   <div class="container">
@@ -18,15 +23,13 @@
 
           <hr>
 
-          @if($topic->id)
-            <form action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
-              <input type="hidden" name="_method" value="PUT">
+              @if($topic->id)
+                <form action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
+                 <input type="hidden" name="_method" value="PUT">
               @else
                 <form action="{{ route('topics.store') }}" method="POST" accept-charset="UTF-8">
-                  @endif
-
+              @endif
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                   @include('shared._error')
 
                   <div class="form-group">
@@ -35,8 +38,10 @@
 
                   <div class="form-group">
                     <select class="form-control" name="category_id" required>
-                      <option value="" hidden disabled selected>请选择分类</option> @foreach ($categories as $value)
-                        <option value="{{ $value->id }}">{{ $value->name }}</option> @endforeach
+                      <option value="" hidden disabled selected>请选择分类</option>
+                      @foreach ($categories as $value)
+                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                      @endforeach
                     </select>
                   </div>
 
@@ -54,3 +59,20 @@
   </div>
 
 @endsection
+
+
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+      var editor = new Simditor({
+        textarea: $('#editor'),
+      });
+
+    });
+  </script>
+@stop
