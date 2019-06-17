@@ -17,9 +17,9 @@ class SlugTranslateHandler
         $appid = config('services.baidu_translate.appid');
         $key = config('services.baidu_translate.key');
         $salt = time();
-
         // 如果没有配置百度翻译，自动使用兼容的拼音方案
         if (empty($appid) || empty($key)) {
+
             return $this->pinyin($text);
         }
 
@@ -70,6 +70,7 @@ class SlugTranslateHandler
 
     public function pinyin($text)
     {
+
         return str_slug(app(Pinyin::class)->permalink($text));
     }
 }
