@@ -16597,3 +16597,7 @@ body {
   border-top: 1px solid #dcebf5;
 }
 
+.simditor-body img {
+  max-width: 100%;
+}
+
