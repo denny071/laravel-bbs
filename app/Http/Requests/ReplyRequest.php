@@ -2,6 +2,13 @@
 
 namespace App\Http\Requests;
 
+/**
+ * 验证群
+ *
+ * Class ReplyRequest
+ * @package App\Http\Requests
+ * @property $content
+ */
 class ReplyRequest extends Request
 {
     public function rules()
