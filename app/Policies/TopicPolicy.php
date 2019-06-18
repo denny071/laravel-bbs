@@ -15,5 +15,6 @@ class TopicPolicy extends Policy
     public function destroy(User $user, Topic $topic)
     {
         return $user->isAuthorOf($topic);
+        \DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 }
