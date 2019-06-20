@@ -41,44 +41,12 @@ return [
         ],
     ],
     'edit_fields' => [
-        'user' => [
-            'title'              => '用户',
-            'type'               => 'relationship',
-            'name_field'         => 'name',
-            'autocomplete'       => true,
-            'search_fields'      => array("CONCAT(id, ' ', name)"),
-            'options_sort_field' => 'id',
-        ],
-        'topic' => [
-            'title'              => '话题',
-            'type'               => 'relationship',
-            'name_field'         => 'title',
-            'autocomplete'       => true,
-            'search_fields'      => array("CONCAT(id, ' ', title)"),
-            'options_sort_field' => 'id',
-        ],
         'content' => [
             'title'    => '回复内容',
             'type'     => 'textarea',
         ],
     ],
     'filters' => [
-        'user' => [
-            'title'              => '用户',
-            'type'               => 'relationship',
-            'name_field'         => 'name',
-            'autocomplete'       => true,
-            'search_fields'      => array("CONCAT(id, ' ', name)"),
-            'options_sort_field' => 'id',
-        ],
-        'topic' => [
-            'title'              => '话题',
-            'type'               => 'relationship',
-            'name_field'         => 'title',
-            'autocomplete'       => true,
-            'search_fields'      => array("CONCAT(id, ' ', title)"),
-            'options_sort_field' => 'id',
-        ],
         'content' => [
             'title'    => '回复内容',
         ],
