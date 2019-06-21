@@ -13,7 +13,11 @@ use App\Models\Topic;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+
+
 /**
+ * 活跃用户计算
+ *
  * Trait ActivceUserHelper
  * @package App\Models\Traits
  */

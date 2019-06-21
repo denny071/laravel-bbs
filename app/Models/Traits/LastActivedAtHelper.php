@@ -11,6 +11,12 @@ namespace App\Models\Traits;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
 
+/**
+ * 最新活动用户时间
+ *
+ * Trait LastActivedAtHelper
+ * @package App\Models\Traits
+ */
 trait LastActivedAtHelper
 {
 

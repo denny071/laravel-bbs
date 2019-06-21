@@ -99,6 +99,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function setAvatarAttribute($path)
     {
+        //判断开始的地址是否包含http
         if (! starts_with($path, 'http')){
             $path = config('app.url') . "/uploads/images/avatars/$path";
         }

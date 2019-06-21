@@ -4,11 +4,26 @@ namespace App\Handlers;
 
 use Image;
 
+/**
+ * 图片上传处理
+ *
+ * Class ImageUploadHandler
+ * @package App\Handlers
+ */
 class ImageUploadHandler{
 
     //只允许以下后缀名的图片文件上传
     protected $allowed_ext = ["png", "jpg", "gif","jpeg"];
 
+    /**
+     * 保存图片大小
+     *
+     * @param $file
+     * @param $folder
+     * @param $file_prefix
+     * @param bool $max_width
+     * @return array|bool
+     */
     public function save($file, $folder, $file_prefix, $max_width = false)
     {
         // 构建存储的文件夹规则,例如:uploads/images/avatars/201709/21
@@ -36,6 +51,12 @@ class ImageUploadHandler{
         ];
     }
 
+    /**
+     * 调整图片大小
+     *
+     * @param $file_path
+     * @param $max_width
+     */
     public function reduceSize($file_path, $max_width)
     {
         // 先实例化，传参是文件的磁盘物理路径

@@ -5,6 +5,12 @@ namespace App\Handlers;
 use GuzzleHttp\Client;
 use Overtrue\Pinyin\Pinyin;
 
+/**
+ * 懒加载翻译处理
+ *
+ * Class SlugTranslateHandler
+ * @package App\Handlers
+ */
 class SlugTranslateHandler
 {
     public function translate($text)

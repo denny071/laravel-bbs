@@ -24,7 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //计算活跃用户，每小时计算一次
        $schedule->command('larabbs:calculate-active-user')->hourly();
+       // 同步用户活跃时间，每天计算一次
        $schedule->command("larabbs:sync-user-actived-at")->dailyAt("00:00");
     }
 

@@ -10,15 +10,6 @@ use App\Models\Topic;
 
 class TopicObserver
 {
-    public function creating(Topic $topic)
-    {
-        //
-    }
-
-    public function updating(Topic $topic)
-    {
-        //
-    }
 
     public function saving(Topic $topic)
     {
@@ -27,7 +18,6 @@ class TopicObserver
 
         // 生成话题摘录
         $topic->excerpt = make_excerpt($topic->body);
-
     }
 
     public function saved(Topic $topic)

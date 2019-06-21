@@ -8,7 +8,7 @@ class Topic extends Model
     //批量填充
     protected $fillable =  ['title','body', 'category_id', 'excerpt', 'slug'];
 
-
+    // 排序
     public function scopeWithOrder($query, $order)
     {
         // 不同的排序，使用不同的数据读取逻辑
@@ -25,6 +25,7 @@ class Topic extends Model
         return $query->with('user', 'category');
     }
 
+    // 回复按照更新时间排
     public function scopeRecentReplied($query)
     {
         // 当话题有新回复时，我们将编写逻辑来更新话题模型的 reply_count 属性，
@@ -38,7 +39,11 @@ class Topic extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
-
+    /**
+     * 分类关联
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -5,6 +5,12 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * 自定义中间件，用于记录用户活动时间
+ *
+ * Class RecordLastActivedTime
+ * @package App\Http\Middleware
+ */
 class RecordLastActivedTime
 {
     /**

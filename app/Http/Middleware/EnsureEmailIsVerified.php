@@ -15,6 +15,7 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next)
     {
+        // 检查用户是否已经验证登录
         // 三个判断:
         // 1. 如果用户已经登录
         // 2. 并且还未认证 Email
