@@ -7,6 +7,7 @@ use App\Models\Topic;
 use App\Models\User;
 use App\Transformers\TopicTransformer;
 use Illuminate\Http\Request;
+use JPush\Client;
 
 class TopicsController extends Controller
 {
@@ -46,10 +47,10 @@ class TopicsController extends Controller
 
     public function store(TopicRequest $request, Topic $topic)
     {
+
         $topic->fill($request->all());
         $topic->user_id = $this->user()->id;
         $topic->save();
-
         return $this->response->item($topic,new TopicTransformer())->setStatusCode(201);
    }
 

@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\DatabaseNotification;
 use JPush\Client;
 
-class PushNotification
+class PushNotification implements ShouldQueue
 {
     protected $client;
 
@@ -24,24 +24,27 @@ class PushNotification
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param  NotificationSent  $event
      * @return void
      */
     public function handle(DatabaseNotification $notification)
     {
-        if (app()->environment('local')) {
-            return;
-        }
+//        if (app()->environment('local')) {
+//            return;
+//        }
 
         $user = $notification->notifiable;
 
-        if (!$user->registration_id){
+        // 没有 registration_id 的不同推送
+        if (!$user->registration_id) {
             return;
         }
 
-        $this->client->push()->setPlatform('all')
+        // 推送消息
+        $this->client->push()
+            ->setPlatform(['android'])
             ->addRegistrationId($user->registration_id)
-            ->setNotificationAlert(strip_tags($notification))
+            ->androidNotification("test")
             ->send();
     }
 }

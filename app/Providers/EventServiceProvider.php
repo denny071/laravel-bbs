@@ -15,23 +15,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            //注册邮件监听器
-            SendEmailVerificationNotification::class,
-        ],
 
-        \Illuminate\Auth\Events\Verified::class => [
-            // 注册邮件验证监听器
-            \App\Listeners\EmailVerified::class
-        ],
 
-         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
-            // add your listeners (aka providers) here
-            'SocialiteProviders\Weixin\WeixinExtendSocialite@handle'
-        ],
-
-        'eloquent.created:Illuminate\Notifications\DatabaseNotification' => [
-            'App\Listeners\PushNotification'
+        'eloquent.created: Illuminate\Notifications\DatabaseNotification' => [
+            'App\Listeners\PushNotification',
         ],
     ];
 
