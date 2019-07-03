@@ -111,6 +111,8 @@ class Kernel extends HttpKernel
 
         // Laravel 自带的强制用户邮箱认证的中间件
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // 接口语言设置
+        'change-locale' => \App\Http\Middleware\ChangeLocale::class,
     ];
 
     /**
