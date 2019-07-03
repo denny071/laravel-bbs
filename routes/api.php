@@ -50,12 +50,17 @@ $api->version('v1',[
     ], function ($api) {
         // 游客可以访问的接口
         $api->get('categories','CategoriesController@index')->name('api.categories.index');
-
+        // 话题列表
         $api->get('topics','TopicsController@index')->name('api.topics.index');
-
+        // 查看话题
         $api->get('topics/{topic}','TopicsController@show')->name('api.topics.show');
-
+        // 摸个用户发布的话题
         $api->get('user/{user}/topics','TopicsController@userIndex')->name('api.user.topics.index');
+        // 话题回复列表
+        $api->get('topics/{topic}/replies','RepliesController@index')->name('api.topics.replies.index');
+        //  某个用户的回复列表
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')->name('api.users.replies.index');
+
 
         // 需要 token 验证的接口
         $api->group(['middleware' => 'api.auth'], function($api) {
@@ -75,7 +80,13 @@ $api->version('v1',[
             $api->delete('topics/{topic}','TopicsController@destroy')->name('api.topics,destroy');
             // 发布回复
             $api->post('topics/{topic}/replies','RepliesController@store')->name('api.topices.replies.store');
+            // 删除回复
             $api->delete('topics/{topic}/replies/{reply}','RepliesController@destroy')->name('api.topices.replies.destroy');
+            // 通知列表
+            $api->get('user/notifications','NotificationsController@index')->name('api.user.notifications.index');
+
+
+
 
         });
     });
