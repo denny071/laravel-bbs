@@ -15,7 +15,7 @@ class UsersController extends Controller
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            return $this->response->error('验证码已失效',422);
+            return $this->response->error('验证码已失效', 422);
         }
         if (!hash_equals((string)$verifyData['code'], $request->verification_code)) {
             return $this->response->error('验证码错误', 422);
@@ -29,16 +29,16 @@ class UsersController extends Controller
 
         Cache::forget($request->verification_code);
 
-        return $this->response->item($user,new UserTransformer())->setMeta([
+        return $this->response->item($user, new UserTransformer())->setMeta([
             'access_token' => \Auth::guard('api')->fromUser($user),
             'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('api')->factory()->getTTL()*60
+            'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
         ])->setStatusCode(201);
     }
 
     public function me()
     {
-        return $this->response->item($this->user(),new UserTransformer());
+        return $this->response->item($this->user(), new UserTransformer());
     }
 
     /**
@@ -61,5 +61,10 @@ class UsersController extends Controller
         $user->update($attributes);
 
         return $this->response->item($user, new UserTransformer());
+    }
+
+    public function activedIndex(User $user)
+    {
+        return $this->response->collection($user->getActiveUsers(),new UserTransformer());
     }
 }
