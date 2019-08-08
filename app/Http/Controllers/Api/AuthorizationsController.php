@@ -9,6 +9,13 @@ use App\Http\Requests\Api\AuthorizationRequest;
 use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Http\Requests\Api\WeappAuthorizationRequest;
 
+
+/**
+ * 验证控制器
+ *
+ * Class AuthorizationsController
+ * @package App\Http\Controllers\Api
+ */
 class AuthorizationsController extends Controller
 {
     public function store(AuthorizationRequest $request)
