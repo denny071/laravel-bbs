@@ -28,10 +28,14 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+    /**
+     * 微信登录
+     *
+     * @param WeappAuthorizationRequest $request
+     */
     public function weappStore(WeappAuthorizationRequest $request)
     {
         $code = $request->code;
-
         $miniProgram = \EasyWeChat::miniProgram();
         $data = $miniProgram->auth->session($code);
 
@@ -71,6 +75,12 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+    /**
+     * 登录类型
+     *
+     * @param $type
+     * @param SocialAuthorizationRequest $request
+     */
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
         if (!in_array($type, ['weixin'])) {

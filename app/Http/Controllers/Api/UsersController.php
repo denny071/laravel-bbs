@@ -36,6 +36,19 @@ class UsersController extends Controller
         ])->setStatusCode(201);
     }
 
+    public function weappStore(UserRequest $request)
+    {
+        // 缓存中是否存在对应的 key
+        $verifyData = \Cache::get($request->verification_key);
+
+        if (!$verifyData) {
+            return $this->response->error('验证码已经失效',422);
+        }
+
+        // 判断验证码是否想相等，不相等返回 401 错误
+        
+    }
+
     public function me()
     {
         return $this->response->item($this->user(), new UserTransformer());
