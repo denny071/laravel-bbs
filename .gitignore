@@ -14,3 +14,4 @@ yarn-error.log
 composer.lock
 .gitignore
 config/wechat.php
+.DS_Store
