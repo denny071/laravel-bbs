@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
+use App\Http\Requests\Api\WeappAuthorizationRequest;
 use App\Models\Image;
 use App\Models\User;
 use App\Transformers\UserTransformer;
@@ -36,13 +37,13 @@ class UsersController extends Controller
         ])->setStatusCode(201);
     }
 
-    public function weappStore(UserRequest $request)
+    public function weappStore(WeappAuthorizationRequest $request)
     {
         // 缓存中是否存在对应的 key
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            return $this->response->error('验证码已经失效',422);
+            return $this->response->error('验证码已经失效:'.$verifyData,422);
         }
 
         // 判断验证码是否想相等，不相等返回 401 错误
