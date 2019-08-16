@@ -17,12 +17,7 @@ class UsersTableSeeder extends Seeder
 
         // 头像假数据
         $avatars = [
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/s5ehp11z6s.png',
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/Lhd1SHqu86.png',
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/LOnMrqbHJn.png',
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/xAuDMxteQy.png',
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png',
-            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/NDnzMutoxX.png',
+            'http://larabbs/uploads/images/avatars/201908/15/11_1565852619_JpFMIqHI3pseO3uj.jpeg',
         ];
 
         // 生成数据集合
@@ -32,7 +27,7 @@ class UsersTableSeeder extends Seeder
         });
 
         // 让隐藏字段课件，并将数据集合转换为数组
-        $user_array = $users->makeVisible(['password','remember_token'])->toArray();
+        $user_array = $users->makeVisible(['password', 'remember_token'])->toArray();
 
         // 插入到数据库中
         User::insert($user_array);
@@ -41,13 +36,12 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'denny';
         $user->email = 'denny@test.com';
-        $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        $user->avatar =  'http://larabbs/uploads/images/avatars/201908/15/11_1565852619_JpFMIqHI3pseO3uj.jpeg';
         $user->save();
 
         $user->assignRole('Founder');
 
-        $user = User::find(2);
-        $user->assignRole('Maintainer');
-
+        // $user = User::find(2);
+        // $user->assignRole('Maintainer');
     }
 }
