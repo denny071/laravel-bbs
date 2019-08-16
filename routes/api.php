@@ -46,6 +46,8 @@ $api->version('v1',[
         $api->put('authorizations/current', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
+        // 用户香型
+        $api->get('users/{user}','UsersController@show')->name('api.users.show');
     });
 
 
@@ -66,7 +68,7 @@ $api->version('v1',[
         $api->get('topics/{topic}/replies','RepliesController@index')->name('api.topics.replies.index');
         //  某个用户的回复列表
         $api->get('users/{user}/replies', 'RepliesController@userIndex')->name('api.users.replies.index');
-
+        // 链接
         $api->get('links','linksController@index')->name('api.link.index');
 
         $api->get('actived/users', 'UsersController@activedIndex')->name('api.actived.users.index');
