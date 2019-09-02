@@ -15,15 +15,11 @@ class UsersTableSeeder extends Seeder
         // 获取 Faker 实例
         $faker = app(Faker\Generator::class);
 
-        // 头像假数据
-        $avatars = [
-            'http://larabbs/uploads/images/avatars/201908/15/11_1565852619_JpFMIqHI3pseO3uj.jpeg',
-        ];
 
         // 生成数据集合
-        $users = factory(User::class)->times(10)->make()->each(function ($user, $index) use ($faker, $avatars) {
+        $users = factory(User::class)->times(10)->make()->each(function ($user, $index) {
             // 从头像数据中随机抽取一个并赋值
-            $user->avatar = $faker->randomElement($avatars);
+            $user->avatar = $this->getAvatar();
         });
 
         // 让隐藏字段课件，并将数据集合转换为数组
@@ -34,9 +30,8 @@ class UsersTableSeeder extends Seeder
 
         // 单独处理第一个用户数据
         $user = User::find(1);
-        $user->name = 'denny';
-        $user->email = 'denny@test.com';
-        $user->avatar =  'http://larabbs/uploads/images/avatars/201908/15/11_1565852619_JpFMIqHI3pseO3uj.jpeg';
+        $user->name = 'xiaoming';
+        $user->email = 'xiaoming@qq.com';
         $user->save();
 
         $user->assignRole('Founder');
@@ -44,4 +39,28 @@ class UsersTableSeeder extends Seeder
         // $user = User::find(2);
         // $user->assignRole('Maintainer');
     }
+
+    /**
+     * 获得随机头像地址
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.uomg.com/api/rand.avatar?format=json");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $data = json_decode($output,true);
+
+        if ($data['code'] == 1) {
+            return $data['imgurl'];
+        }else {
+            return "";
+        }
+    }
+
+
 }
