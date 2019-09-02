@@ -36,10 +36,18 @@ $api->version('v1',[
         $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->name('api.socials.authorizations.store');
         // 登录
         $api->post('authorizations', 'AuthorizationsController@store')->name('api.authorizations.store');
+        // 小程序登录
+        $api->post('weapp/authorizations','AuthorizationsController@weappStore')->name('api.weapp.authorizations.store');
+        // 小程序注册
+        $api->post('weapp/users','UsersController@weappStore')->name('api.weapp.users.store');
+
+
         // 刷新token
         $api->put('authorizations/current', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
+        // 用户香型
+        $api->get('users/{user}','UsersController@show')->name('api.users.show');
     });
 
 
@@ -60,7 +68,7 @@ $api->version('v1',[
         $api->get('topics/{topic}/replies','RepliesController@index')->name('api.topics.replies.index');
         //  某个用户的回复列表
         $api->get('users/{user}/replies', 'RepliesController@userIndex')->name('api.users.replies.index');
-
+        // 链接
         $api->get('links','linksController@index')->name('api.link.index');
 
         $api->get('actived/users', 'UsersController@activedIndex')->name('api.actived.users.index');
@@ -73,6 +81,8 @@ $api->version('v1',[
             $api->post('images','ImagesController@store')->name('api.images.store');
             // 编辑登录用户信息
             $api->patch('user', 'UsersController@update')->name('api.user.update');
+            // 编辑登录用户信息 微信小程序
+            $api->put('user', 'UsersController@update')->name('api.user.update');
             // 图片资源
             $api->post('images', 'ImagesController@store')->name('api.images.store');
             // 发布话题
@@ -91,6 +101,8 @@ $api->version('v1',[
             $api->get('user/notifications/stats', 'NotificationsController@stats')->name('api.user.notifications.stats');
             // 标记消息通知为已读
             $api->patch('user/read/notifications','NotificationsController@read')->name('api.user.notifications.read');
+             // 标记消息通知为已读
+            $api->put('user/read/notifications','NotificationsController@read')->name('api.user.notifications.read.put');
             // 当前登录用户权限
             $api->get('user/permissions','PermissionsController@index')->name('api.user.permissions.index');
 

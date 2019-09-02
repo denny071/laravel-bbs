@@ -7,31 +7,29 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasRoles;
 
+    use HasApiTokens;
     use Traits\ActiveUserHelper;
     use Traits\LastActivedAtHelper;
-
     use MustVerifyEmailTrait;
-
-
-
+    use HasRoles;
     use Notifiable {
         notify as protected laravelNotify;
     }
 
     public function notify($instance)
     {
-        if ($this->id == Auth::id()){
+        if ($this->id == Auth::id()) {
             return;
         }
 
-        if (method_exists($instance, 'toDatabase')){
+        if (method_exists($instance, 'toDatabase')) {
             $this->increment('notification_count');
         }
 
@@ -44,8 +42,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password',"introduction","avatar",
-        'weixin_openid', 'weixin_unionid', 'registration_id'
+        'name', 'phone', 'email', 'password', "introduction", "avatar",
+        'weixin_openid', 'weixin_unionid', 'registration_id',
+        'weixin_session_key','weapp_openid'
     ];
 
     /**
@@ -91,7 +90,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function setPasswordAttribute($value)
     {
-        if (strlen($value) != 60){
+        if (strlen($value) != 60) {
 
             $value = bcrypt($value);
         }
@@ -102,7 +101,7 @@ class User extends Authenticatable implements JWTSubject
     public function setAvatarAttribute($path)
     {
         //判断开始的地址是否包含http
-        if (! starts_with($path, 'http')){
+        if (!starts_with($path, 'http')) {
             $path = config('app.url') . "/uploads/images/avatars/$path";
         }
         $this->attributes['avatar'] = $path;
@@ -126,5 +125,11 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function findForPassport($username)
+    {
+        filter_var($username, FILTER_VALIDATE_EMAIL) ? $credentials['email'] = $username : $credentials['phone'] = $username;
+        return self::where($credentials)->first();
     }
 }

@@ -37,17 +37,17 @@ class UserRequest extends FormRequest
                     'avatar' => "mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208"
                 ];
                 break;
+            case 'PUT':
             case 'PATCH':
                 $userId = \Auth::guard('api')->id();
                 return [
                     'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . $userId,
                     'email' => 'email',
                     'introduction' => 'max:80',
-                    'avatar_image_id' => 'exists:images,id,type,avatar,user_id,'.$userId,
+                    'avatar_image_id' => 'exists:images,id,type,avatar,user_id,' . $userId,
                 ];
                 break;
         }
-
     }
 
     public function attributes()
