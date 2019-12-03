@@ -298,23 +298,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dingo/blueprint.git",
-                "reference": "1fd9d110b9f4c18ded9fcca05dd16b5c28d451f9"
+                "reference": "45bbc59385310de7604e35ea4e27dc1756be9396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dingo/blueprint/zipball/1fd9d110b9f4c18ded9fcca05dd16b5c28d451f9",
-                "reference": "1fd9d110b9f4c18ded9fcca05dd16b5c28d451f9",
+                "url": "https://api.github.com/repos/dingo/blueprint/zipball/45bbc59385310de7604e35ea4e27dc1756be9396",
+                "reference": "45bbc59385310de7604e35ea4e27dc1756be9396",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "~1.2",
-                "illuminate/filesystem": "^5.1",
-                "illuminate/support": "^5.1",
-                "php": ">=5.5.9",
+                "illuminate/filesystem": "^5.5 || ^6.0",
+                "illuminate/support": "^5.5 || ^6.0",
+                "php": "^7.1",
                 "phpdocumentor/reflection-docblock": "^3.1|^4.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.5",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
@@ -346,7 +346,7 @@
                 "docs",
                 "laravel"
             ],
-            "time": "2019-06-20T13:34:54+00:00"
+            "time": "2019-10-07T10:14:17+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4218,16 +4218,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
                 "shasum": ""
             },
             "require": {
@@ -4236,7 +4236,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -4261,7 +4261,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20T15:27:04+00:00"
+            "time": "2019-11-01T11:05:21+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -4791,16 +4791,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v4.3.2",
+            "version": "v4.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "4acf343c9e3aea5a00d51926c01125441707635c"
+                "reference": "2a7bcc592adcaab9efc165bbced5a91fe905fad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/4acf343c9e3aea5a00d51926c01125441707635c",
-                "reference": "4acf343c9e3aea5a00d51926c01125441707635c",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/2a7bcc592adcaab9efc165bbced5a91fe905fad4",
+                "reference": "2a7bcc592adcaab9efc165bbced5a91fe905fad4",
                 "shasum": ""
             },
             "require": {
@@ -4865,20 +4865,20 @@
                 "caching",
                 "psr6"
             ],
-            "time": "2019-06-26T07:55:28+00:00"
+            "time": "2019-12-01T10:50:31+00:00"
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v1.1.5",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache-contracts.git",
-                "reference": "ec5524b669744b5f1dc9c66d3c2b091eb7e7f0db"
+                "reference": "af50d14ada9e4e82cfabfabdc502d144f89be0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/ec5524b669744b5f1dc9c66d3c2b091eb7e7f0db",
-                "reference": "ec5524b669744b5f1dc9c66d3c2b091eb7e7f0db",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/af50d14ada9e4e82cfabfabdc502d144f89be0a1",
+                "reference": "af50d14ada9e4e82cfabfabdc502d144f89be0a1",
                 "shasum": ""
             },
             "require": {
@@ -4923,7 +4923,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-06-13T11:15:36+00:00"
+            "time": "2019-10-04T21:43:27+00:00"
         },
         {
             "name": "symfony/console",
@@ -6143,23 +6143,23 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.2",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0"
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/191afdcb5804db960d26d8566b7e9a2843cab3a0",
-                "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^7.1.3",
+                "psr/container": "^1.0"
             },
             "suggest": {
-                "psr/container": "",
                 "symfony/service-implementation": ""
             },
             "type": "library",
@@ -6197,7 +6197,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-05-28T07:50:59+00:00"
+            "time": "2019-10-14T12:27:06+00:00"
         },
         {
             "name": "symfony/translation",
@@ -6410,28 +6410,28 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v4.3.2",
+            "version": "v4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "9dee83031dcf6dcb53bb7ec1c51de085329bf5cb"
+                "reference": "e566070effe60b8d16b99e958cdbd92aa2e470cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/9dee83031dcf6dcb53bb7ec1c51de085329bf5cb",
-                "reference": "9dee83031dcf6dcb53bb7ec1c51de085329bf5cb",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/e566070effe60b8d16b99e958cdbd92aa2e470cb",
+                "reference": "e566070effe60b8d16b99e958cdbd92aa2e470cb",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3"
             },
             "require-dev": {
-                "symfony/var-dumper": "^4.1.1"
+                "symfony/var-dumper": "^4.1.1|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -6466,7 +6466,7 @@
                 "instantiate",
                 "serialize"
             ],
-            "time": "2019-06-22T08:39:44+00:00"
+            "time": "2019-12-01T08:39:58+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
